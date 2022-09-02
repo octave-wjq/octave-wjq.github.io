@@ -27,8 +27,6 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
-    <meta name="referrer" content="no-referrer-when-downgrade">
-  
   
   <title>友链 - Octave</title>
 
@@ -296,6 +294,28 @@
 
   <article id="comments" lazyload>
     
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"7QszSvipEn5HEASSTi799Wiu-gzGzoHsz","appKey":"nbMLyCbpKJuDXxdccImQilq0","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
 
   </article>
 
@@ -356,16 +376,16 @@
   
     
       <span id="leancloud-site-pv-container" style="display: none">
-        总访问量 
+        总访问量
         <span id="leancloud-site-pv"></span>
-         次
+        次
       </span>
     
     
       <span id="leancloud-site-uv-container" style="display: none">
-        总访客数 
+        总访客数
         <span id="leancloud-site-uv"></span>
-         人
+        人
       </span>
     
     
