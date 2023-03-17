@@ -16,17 +16,26 @@
   <meta name="author" content="OCtave">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Octave的个人博客">
+    <meta name="description" content="Chrome DevToolsChrome DevTools是Google Chrome浏览器的一组内置Web开发工具，用于调试、优化和测试Web应用程序。Chrome DevTools [官方文档] (https:&#x2F;&#x2F;developers.google.com&#x2F;web&#x2F;tools&#x2F;chrome-devtools?hl&#x3D;zh-cn)Chrome DevTools 是辅助开发者进行 Web 开发的重">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解 Chrome DevTools">
 <meta property="og:url" content="https://woaipojie.github.io/2023/03/16/DevTools/index.html">
 <meta property="og:site_name" content="Octave">
-<meta property="og:description" content="Octave的个人博客">
+<meta property="og:description" content="Chrome DevToolsChrome DevTools是Google Chrome浏览器的一组内置Web开发工具，用于调试、优化和测试Web应用程序。Chrome DevTools [官方文档] (https:&#x2F;&#x2F;developers.google.com&#x2F;web&#x2F;tools&#x2F;chrome-devtools?hl&#x3D;zh-cn)Chrome DevTools 是辅助开发者进行 Web 开发的重">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://woaipojie.github.io/2023/03/16/DevTools/%E4%BA%A4%E4%BA%92%E9%80%BB%E8%BE%91.png">
+<meta property="og:image" content="https://woaipojie.github.io/2023/03/16/DevTools/chromeExtension%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="https://woaipojie.github.io/2023/03/16/DevTools/chromeDevToolsExtension%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="https://woaipojie.github.io/2023/03/16/DevTools/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95.png">
+<meta property="og:image" content="https://woaipojie.github.io/2023/03/16/DevTools/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="https://woaipojie.github.io/2023/03/16/DevTools/%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95.png">
+<meta property="og:image" content="https://woaipojie.github.io/2023/03/16/DevTools/%E5%9F%BA%E4%BA%8EADB%E7%9A%84%E8%B0%83%E8%AF%95%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="https://woaipojie.github.io/2023/03/16/DevTools/%E7%A8%8B%E5%BA%8F%E8%B0%83%E8%AF%95%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%90%86.png">
 <meta property="article:published_time" content="2023-03-16T07:20:58.000Z">
-<meta property="article:modified_time" content="2023-03-16T07:21:34.979Z">
+<meta property="article:modified_time" content="2023-03-17T09:35:27.798Z">
 <meta property="article:author" content="OCtave">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://woaipojie.github.io/2023/03/16/DevTools/%E4%BA%A4%E4%BA%92%E9%80%BB%E8%BE%91.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -237,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          5k 字
         
       </span>
     
@@ -248,7 +257,7 @@
         
         
         
-          1 分钟
+          43 分钟
         
       </span>
     
@@ -299,7 +308,177 @@
             
               <div class="markdown-body">
                 
-                
+                <h2 id="Chrome-DevTools"><a href="#Chrome-DevTools" class="headerlink" title="Chrome DevTools"></a>Chrome DevTools</h2><p>Chrome DevTools是Google Chrome浏览器的一组内置Web开发工具，用于调试、优化和测试Web应用程序。<br>Chrome DevTools [官方文档] (<a target="_blank" rel="noopener" href="https://developers.google.com/web/tools/chrome-devtools?hl=zh-cn">https://developers.google.com/web/tools/chrome-devtools?hl=zh-cn</a>)<br>Chrome DevTools 是辅助开发者进行 Web 开发的重要调试工具，DevTools 是 Chromium 的一部分，可以作为独立项目被 Electron 等容器集成。DevTools 主要分为四部分：</p>
+<ul>
+<li>Frontend：调试器前端，默认由 Chromium 内核层集成</li>
+<li>Backend：调试器后端，Chromium、V8 或 Node.js</li>
+<li>Protocol：调试协议</li>
+<li>Message Channels：消息通道，包括：Embedder Channel、WebSocket Channel、Chrome Extensions Channel、USB&#x2F;ADB Channel<img src="/2023/03/16/DevTools/%E4%BA%A4%E4%BA%92%E9%80%BB%E8%BE%91.png" srcset="/img/loading.gif" lazyload class="" title="交互逻辑"></li>
+</ul>
+<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>Chrome DevTools包括多个面板，如Elements（元素）、Console（控制台）、Sources（源代码）、Network（网络）和Performance（性能）等。每个面板提供了各种功能</p>
+<table>
+<thead>
+<tr>
+<th align="center">面板</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Elements面板</td>
+<td align="center">用于查看和编辑页面上的HTML、CSS和JavaScript。</td>
+</tr>
+<tr>
+<td align="center">Console面板</td>
+<td align="center">提供了一个交互式JavaScript控制台，可以执行JavaScript代码并查看日志和错误消息。</td>
+</tr>
+<tr>
+<td align="center">Sources面板</td>
+<td align="center">用于调试JavaScript代码，可以设置断点、单步执行和监视变量等。</td>
+</tr>
+<tr>
+<td align="center">Network面板</td>
+<td align="center">用于查看HTTP请求和响应，以及网页加载性能分析。</td>
+</tr>
+<tr>
+<td align="center">Performance面板</td>
+<td align="center">提供了一些有用的工具，例如跟踪重绘和回流、分析页面加载时间等。</td>
+</tr>
+</tbody></table>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>Chrome DevTools的作用是帮助开发人员诊断和解决Web应用程序中的问题，例如：</p>
+<ul>
+<li>调试JavaScript代码：可以使用DevTools的调试器功能在运行中的JavaScript代码中设置断点、单步执行、监视变量等。</li>
+<li>优化网页性能：可以使用Network和Performance面板分析网页的加载性能，识别慢速请求和瓶颈，以及评估页面的渲染速度。</li>
+<li>检查网页结构：可以使用Elements面板查看和编辑页面的HTML、CSS和JavaScript，查找错误和潜在的性能问题。</li>
+<li>测试响应式设计：可以使用Device Mode功能测试网页在不同设备上的外观和功能。</li>
+</ul>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>Chrome DevTools通过Chrome浏览器提供的开发者API与浏览器进行通信。开发者API允许DevTools与浏览器交互，以获取有关页面结构、资源和性能的信息，并对浏览器进行控制和调试。DevTools使用Chrome浏览器内置的WebKit引擎来解析和渲染网页，并提供各种功能和面板来帮助开发人员调试和优化Web应用程序。</p>
+<h2 id="Chrome-Extension"><a href="#Chrome-Extension" class="headerlink" title="Chrome Extension"></a>Chrome Extension</h2><h3 id="和Plug-in对比"><a href="#和Plug-in对比" class="headerlink" title="和Plug-in对比"></a>和Plug-in对比</h3><p>我们经常说的 Chrome “插件”，其实不是真正意义上的 Chrome Plug-in，一般是指 Chrome Extension(简称“拓展”)。</p>
+<ul>
+<li>扩展（Extension），指的是通过调用 Chrome 提供的 Chrome API 来扩展浏览器功能的一种组件，工作在浏览器层面，使用 HTML + Javascript 语言开发。</li>
+<li>插件（Plug-in），指的是通过调用 Webkit 内核 NPAPI&#x2F;PPAPI 来扩展内核功能的一种组件，工作在内核层面，理论上可以用任何一种生成本地二进制程序的语言开发，比如 C&#x2F;C++、Delphi 等。比如 Flash player 插件，就属于这种类型。一般在网页中用 <code>&lt;object&gt;</code> 或者 <code>&lt;embed&gt;</code> 标签声明的部分，就要靠插件来渲染。</li>
+</ul>
+<ol>
+<li><p>功能不同：Chrome Extension 是一种基于Web技术的浏览器扩展，可以在浏览器上添加新的功能和服务，如广告拦截、翻译、代理等；而 Plug-in 是一种用于扩展浏览器功能的二进制程序，通常用于媒体播放、PDF查看等功能。</p>
+</li>
+<li><p>应用场景不同：Chrome Extension 更适合于需要修改或扩展浏览器功能的场景，例如添加新的工具栏、弹出式窗口或网页注入等；而 Plug-in 更适合于需要在浏览器中运行特定类型文件的场景，例如音视频播放、图像处理、PDF查看等。</p>
+</li>
+<li><p>编写方式不同：Chrome Extension 通常使用HTML、CSS、JavaScript等Web技术编写，并可以访问浏览器的API和资源；而 Plug-in 通常需要使用特定的编程语言和API，例如C++、NPAPI等。</p>
+</li>
+<li><p>安全性不同：由于 Chrome Extension 是基于Web技术开发的，因此其运行在沙箱环境中，可以保护用户的隐私和安全；而 Plug-in 由于是二进制程序，存在一定的安全风险，可能会导致漏洞和恶意攻击。</p>
+</li>
+</ol>
+<h3 id="Chrome-Extension-的组件构成"><a href="#Chrome-Extension-的组件构成" class="headerlink" title="Chrome Extension 的组件构成"></a>Chrome Extension 的组件构成</h3><ol>
+<li><p>manifest.json：是 Extension 的元数据，定义了 Extension 的基本信息、权限、文件路径等，是 Extension 的配置文件。</p>
+</li>
+<li><p>Background Scripts：是在 Extension 启动时运行的后台脚本，可以监听浏览器事件、处理网络请求等，常用于实现后台任务和消息通信。</p>
+</li>
+<li><p>Content Scripts：是在 Web 页面中运行的 JavaScript 脚本，可以修改页面的 DOM 结构、响应用户交互等，常用于实现页面注入和页面操作。</p>
+</li>
+<li><p>Popup Views：是 Extension 的弹出窗口，可以显示 Extension 的功能和信息，常用于实现用户界面和交互。</p>
+</li>
+<li><p>Options Pages：是 Extension 的设置页面，可以允许用户自定义 Extension 的功能和选项。</p>
+</li>
+<li><p>Browser Actions 和 Page Actions：是 Extension 的按钮和图标，可以显示在浏览器工具栏或地址栏中，常用于实现用户快速操作和反馈。</p>
+</li>
+</ol>
+<h3 id="Chrome-Extension-的架构图"><a href="#Chrome-Extension-的架构图" class="headerlink" title="Chrome Extension 的架构图"></a>Chrome Extension 的架构图</h3><img src="/2023/03/16/DevTools/chromeExtension%E6%9E%B6%E6%9E%84.png" srcset="/img/loading.gif" lazyload class="" title="架构图片">
+<h3 id="Chrome-Extension-分类"><a href="#Chrome-Extension-分类" class="headerlink" title="Chrome Extension 分类"></a>Chrome Extension 分类</h3><p>Chrome 拓展的 JS 主要可以分为这 5 类：injected script、content-script、popup js、background js 和 devtools js</p>
+<table>
+<thead>
+<tr>
+<th>JS 种类</th>
+<th>可访问的 API</th>
+<th>DOM 访问情况</th>
+<th>JS 访问情况</th>
+<th>直接跨域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>injected script</td>
+<td>和普通 JS 无任何差别，不能访问任何扩展 API</td>
+<td>可以访问</td>
+<td>可以访问</td>
+<td>不可以</td>
+</tr>
+<tr>
+<td>content script</td>
+<td>只能访问 extension、runtime 等部分 API</td>
+<td>可以访问</td>
+<td>不可以</td>
+<td>不可以</td>
+</tr>
+<tr>
+<td>popup js</td>
+<td>可访问绝大部分 API，除了 devtools 系列</td>
+<td>不可直接访问</td>
+<td>不可以</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>background js</td>
+<td>可访问绝大部分 API，除了 devtools 系列</td>
+<td>不可直接访问</td>
+<td>不可以</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>devtools js</td>
+<td>只能访问 devtools、extension、runtime 等部分 API</td>
+<td>可以访问</td>
+<td>可以访问</td>
+<td>不可以</td>
+</tr>
+</tbody></table>
+<h2 id="Chrome-DevTools-Extension"><a href="#Chrome-DevTools-Extension" class="headerlink" title="Chrome DevTools Extension"></a>Chrome DevTools Extension</h2><p>Chrome DevTools Extensions 是基于 Chrome 开发者工具（DevTools）的扩展，可以为开发者工具添加更多的功能和工具。开发者可以通过 Chrome DevTools Extensions 扩展开发者工具的面板、侧边栏、代码片段等组件，为开发者提供更多的工具和功能。</p>
+<p>目前主流小程序平台针对小程序特有的技术特征，基于 Chrome DevTools Extensions 进行扩展及改造，赋能小程序开发的各种调试能力。</p>
+<ol>
+<li>DevTools 面板（DevTools panel）：扩展添加的面板，可以与开发者工具中的元素检查器、控制台等组件集成，为开发者提供更多的工具和功能；</li>
+<li>DevTools 侧边栏（DevTools sidebar）：扩展添加的侧边栏，可以包含自定义的工具和面板，为开发者提供更多的导航和展示功能；</li>
+<li>Content script：与网页内容交互的脚本，可以向页面注入代码、修改页面内容等；</li>
+<li>Background page：后台页面，可以处理扩展的后台任务、事件等；</li>
+<li>Popup 页面（Popup page）：弹出窗口页面，可以与用户交互，提供扩展的快捷操作和功能；</li>
+<li>Options 页面（Options page）：选项设置页面，可以让用户自定义扩展的行为和功能。</li>
+</ol>
+<img src="/2023/03/16/DevTools/chromeDevToolsExtension%E6%9E%B6%E6%9E%84.png" srcset="/img/loading.gif" lazyload class="" title="架构图片">
+
+<h2 id="Chrome-DevTools-protocol"><a href="#Chrome-DevTools-protocol" class="headerlink" title="Chrome DevTools protocol"></a>Chrome DevTools protocol</h2><p>Chrome DevTools protocol 是一种基于 JSON 的协议，用于远程控制和调试 Chrome 浏览器或 Chromium 内核的应用程序。通过该协议，可以让开发者在运行的 Chrome 实例中获取应用程序的状态、调试应用程序、模拟用户操作等。</p>
+<p>Chrome DevTools protocol 是基于 WebSocket 实现的，可以通过 WebSocket 连接来和 Chrome 浏览器进行通信。开发者可以通过发送特定的 JSON 消息，来控制浏览器进行特定的操作，如打开一个新的标签页、导航到指定的 URL、获取页面的 DOM 结构等。</p>
+<p>该协议把操作划分为不同的域(domain)，比如 DOM、Debugger、Network、Console 和 Timeline 等，可以理解为 DevTools 中的不同功能模块。</p>
+<p>每个域(domain)定义了它所支持的 command 和它所产生的 event。每个 command 包含 request 和 response 两部分，request 部分指定所要进行的操作以及操作说要的参数，response 部分表明操作状态，成功或失败。command 和 event 中可能涉及到非基本数据类型，在 domain 中被归为 Type，比如：’frameId’: <code>&lt;FrameId&gt;</code>，其中 FrameId 为非基本数据类型。</p>
+<p>基于 Chrome Debugging Protocol 的 Client 端的库有很多，其中比较常用的有：</p>
+<ol>
+<li>Chrome Remote Interface：官方提供的 Node.js 库，支持对 Chrome 浏览器或 Chromium 内核进行远程调试。</li>
+<li>Puppeteer：由 Google 开发的一个 Node.js 库，支持对 Chrome 或 Chromium 进行自动化控制和测试。</li>
+<li>pychrome：Python 的一个 Chrome Debugging Protocol 客户端库，可以通过 Python 脚本来控制 Chrome 浏览器或 Chromium。</li>
+<li>chromedp：Golang 的一个 Chrome Debugging Protocol 客户端库，可以通过 Golang 代码来控制 Chrome 浏览器或 Chromium。</li>
+<li>ChromeDevTools.jl：Julia 的一个 Chrome Debugging Protocol 客户端库，可以通过 Julia 代码来控制 Chrome 浏览器或 Chromium。</li>
+</ol>
+<h2 id="搞清楚的问题为啥可以进行远程调试"><a href="#搞清楚的问题为啥可以进行远程调试" class="headerlink" title="搞清楚的问题为啥可以进行远程调试"></a>搞清楚的问题为啥可以进行远程调试</h2><p>什么是远程调试？远程调试可以让您从自己的开发计算机上检查 Android 设备上运行的页面，当然开发本地的页面也可以通过远程调试的方式实现。</p>
+<img src="/2023/03/16/DevTools/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95.png" srcset="/img/loading.gif" lazyload class="" title="远程调试">
+
+<p>远程调试的交互流程</p>
+<img src="/2023/03/16/DevTools/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload class="" title="远程调试流程">
+
+<p>真机调试流程总览</p>
+<img src="/2023/03/16/DevTools/%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95.png" srcset="/img/loading.gif" lazyload class="" title="真机调试">
+
+<h3 id="Chrome-Inspect如何映射移动设备的webview视图"><a href="#Chrome-Inspect如何映射移动设备的webview视图" class="headerlink" title="Chrome Inspect如何映射移动设备的webview视图"></a>Chrome Inspect如何映射移动设备的webview视图</h3><ol>
+<li><p>在移动设备上打开要调试的 Web 应用程序，并确保设备和计算机在同一局域网中。</p>
+</li>
+<li><p>在移动设备上启用开发者选项，并开启 USB 调试模式。</p>
+</li>
+<li><p>将移动设备通过 USB 连接到计算机上，并在计算机上打开 Chrome 浏览器。</p>
+</li>
+<li><p>在 Chrome 地址栏中输入 chrome:&#x2F;&#x2F;inspect，并回车。</p>
+</li>
+<li><p>在页面上找到“设备”部分，可以看到连接到计算机的移动设备，点击“inspect”按钮即可映射移动设备上的 Webview 视图到 Chrome 开发者工具中。</p>
+</li>
+</ol>
+<p>这种映射的原理是通过 Chrome 远程调试协议来实现的。移动设备上的 Webview 实际上是一个嵌入在应用程序中的浏览器视图，Chrome 开发者工具通过远程调试协议来与该视图进行通信，并将调试信息返回给开发者工具界面。这样，开发者就可以在计算机上通过 Chrome 开发者工具来调试移动设备上的 Web 应用程序了。<br>具体的映射关系如下所示</p>
+<img src="/2023/03/16/DevTools/%E5%9F%BA%E4%BA%8EADB%E7%9A%84%E8%B0%83%E8%AF%95%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload class="" title="基于ADB的调试流程">
+
+<h3 id="Chrome-Inspect如何实现webview视图和Chrome开发者工具交互"><a href="#Chrome-Inspect如何实现webview视图和Chrome开发者工具交互" class="headerlink" title="Chrome Inspect如何实现webview视图和Chrome开发者工具交互"></a>Chrome Inspect如何实现webview视图和Chrome开发者工具交互</h3><p>从上述的知识可以知道，因为移动设备的webview页面被转发到PC的对应端口，通过 Chrome 远程调试协议操纵 Chrome 开发者工具面板就可以操纵Android&#x2F;iOS 移动设备 WebView 视图。</p>
+<h3 id="chrome和webview的架构图"><a href="#chrome和webview的架构图" class="headerlink" title="chrome和webview的架构图"></a>chrome和webview的架构图</h3><img src="/2023/03/16/DevTools/%E7%A8%8B%E5%BA%8F%E8%B0%83%E8%AF%95%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%90%86.png" srcset="/img/loading.gif" lazyload class="" title="程序调试小程序原理">
                 
               </div>
             
