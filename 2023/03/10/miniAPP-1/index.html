@@ -19,23 +19,23 @@
     <meta name="description" content="微信小程序1. 小程序项目结构文件  app.js：小程序的入口文件，主要包含了小程序的生命周期函数、全局变量和全局函数等。 app.json：小程序的全局配置文件，包含了小程序的基本信息、页面路径、窗口配置、导航栏配置等。 app.wxss：小程序的全局样式文件，包含了小程序的全局样式定义。 pages：小程序的页面目录，包含了小程序所有的页面文件，每个页面通常由一个.wxml、.js、.wxs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序架构">
-<meta property="og:url" content="https://woaipojie.github.io/2023/03/10/miniAPP-1/index.html">
+<meta property="og:url" content="https://wjq-octave.github.io/2023/03/10/miniAPP-1/index.html">
 <meta property="og:site_name" content="Octave">
 <meta property="og:description" content="微信小程序1. 小程序项目结构文件  app.js：小程序的入口文件，主要包含了小程序的生命周期函数、全局变量和全局函数等。 app.json：小程序的全局配置文件，包含了小程序的基本信息、页面路径、窗口配置、导航栏配置等。 app.wxss：小程序的全局样式文件，包含了小程序的全局样式定义。 pages：小程序的页面目录，包含了小程序所有的页面文件，每个页面通常由一个.wxml、.js、.wxs">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://woaipojie.github.io/2023/03/10/miniAPP-1/file.png">
-<meta property="og:image" content="https://woaipojie.github.io/2023/03/10/miniAPP-1/%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="https://woaipojie.github.io/2023/03/10/miniAPP-1/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8-1.png">
-<meta property="og:image" content="https://woaipojie.github.io/2023/03/10/miniAPP-1/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8.png">
-<meta property="og:image" content="https://woaipojie.github.io/2023/03/10/miniAPP-1/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93.png">
-<meta property="og:image" content="https://woaipojie.github.io/2023/03/10/miniAPP-1/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1-%E5%8E%9F%E7%90%86.png">
-<meta property="og:image" content="https://woaipojie.github.io/2023/03/10/miniAPP-1/%E8%A7%86%E5%9B%BE%E6%B8%B2%E6%9F%93.png">
+<meta property="og:image" content="https://wjq-octave.github.io/2023/03/10/miniAPP-1/file.png">
+<meta property="og:image" content="https://wjq-octave.github.io/2023/03/10/miniAPP-1/%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="https://wjq-octave.github.io/2023/03/10/miniAPP-1/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8-1.png">
+<meta property="og:image" content="https://wjq-octave.github.io/2023/03/10/miniAPP-1/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8.png">
+<meta property="og:image" content="https://wjq-octave.github.io/2023/03/10/miniAPP-1/%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93.png">
+<meta property="og:image" content="https://wjq-octave.github.io/2023/03/10/miniAPP-1/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1-%E5%8E%9F%E7%90%86.png">
+<meta property="og:image" content="https://wjq-octave.github.io/2023/03/10/miniAPP-1/%E8%A7%86%E5%9B%BE%E6%B8%B2%E6%9F%93.png">
 <meta property="article:published_time" content="2023-03-10T07:31:42.000Z">
 <meta property="article:modified_time" content="2023-03-16T07:21:26.100Z">
 <meta property="article:author" content="OCtave">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://woaipojie.github.io/2023/03/10/miniAPP-1/file.png">
+<meta name="twitter:image" content="https://wjq-octave.github.io/2023/03/10/miniAPP-1/file.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"woaipojie.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"7QszSvipEn5HEASSTi799Wiu-gzGzoHsz","app_key":"nbMLyCbpKJuDXxdccImQilq0","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"wjq-octave.github.io","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"7QszSvipEn5HEASSTi799Wiu-gzGzoHsz","app_key":"nbMLyCbpKJuDXxdccImQilq0","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -417,7 +417,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>微信小程序架构</div>
-      <div>https://woaipojie.github.io/2023/03/10/miniAPP-1/</div>
+      <div>https://wjq-octave.github.io/2023/03/10/miniAPP-1/</div>
     </div>
     <div class="license-meta">
       
